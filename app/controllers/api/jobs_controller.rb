@@ -7,11 +7,12 @@ class Api::JobsController < ApplicationController
     @i = 0
     while @i < @length
       @job.truck_id = @trucks[@i].id
-      if @job.save
+      if @job.valid?
+        @job.save
         render "api/trucks/index"
         break
       elsif @i == @length - 1
-        render json: @job.errors.full_messages, status: 422
+        render json: ['No truck available'], status: 422
       end
       @i += 1
     end

@@ -24,7 +24,6 @@ class TruckUploadForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const truck = this.state;
-    console.log(truck);
     this.props.createTruck({truck});
   }
 
@@ -47,11 +46,14 @@ class TruckUploadForm extends Component {
   render() {
     return (
       <div>
+        <h1>Add Truck</h1>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <input type="date" defaultValue={this.formatDate}></input>
-          <input placeholder="Name" type="text" autoFocus="autofocus"
+          <h2>Name</h2>
+          <input placeholder="Name of truck" type="text" autoFocus="autofocus"
             value={this.state.name} onChange={this.update('name')}></input>
+          <h2>Start Time (hour)</h2>
           <select onChange={this.update('start_time')} value={this.state.start_time}>
             <option value="12:00 AM">12 AM</option>
             <option value="1:00 AM">1 AM</option>
@@ -78,6 +80,7 @@ class TruckUploadForm extends Component {
             <option value="10:00 PM">10 PM</option>
             <option value="11:00 PM">11 PM</option>
           </select>
+          <h2>End Time (hour)</h2>
           <select onChange={this.update('end_time')} value={this.state.end_time}>
             <option value="12:00 AM">12 AM</option>
             <option value="1:00 AM">1 AM</option>
@@ -103,7 +106,7 @@ class TruckUploadForm extends Component {
             <option value="9:00 PM">9 PM</option>
             <option value="10:00 PM">10 PM</option>
             <option value="11:00 PM">11 PM</option>
-          </select>
+          </select> <br />
           <input type="submit" value="Submit"></input>
         </form>
       </div>

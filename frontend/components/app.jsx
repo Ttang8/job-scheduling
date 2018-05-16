@@ -1,10 +1,11 @@
 import React from 'react';
 import TruckUploadFormContainer from './truck/truck_upload_form_container';
+import TruckDisplayContainer from './truck/truck_display';
 
 const App = () => (
   <div>
-    This is the App
     <TruckUploadFormContainer />
+    <TruckDisplayContainer />
   </div>
 );
 

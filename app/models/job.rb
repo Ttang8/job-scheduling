@@ -29,12 +29,26 @@ class Job < ApplicationRecord
       errors.add(:end_time, "Truck not available at that time")
     else
       jobs.each do |job|
-        if self.start_time > job.start_time && self.start_time < job.end_time
+        if self.start_time >= job.start_time && self.start_time < job.end_time
           errors.add(:start_time, "Conflicts with another job")
         elsif self.end_time > job.start_time && self.start_time < job.end_time
           errors.add(:end_time, "Conflicts with another job")
         end
       end
+    end
+  end
+
+  def after_current_time
+
+  end
+
+  def s_time
+    if self.start_time.hour == 12
+      return "12 PM"
+    elsif self.start_time.hour > 12
+      return "#{(self.start_time.hour)-12} PM"
+    else
+      return "#{self.start_time.hour} AM"
     end
   end
 end

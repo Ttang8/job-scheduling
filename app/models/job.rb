@@ -14,6 +14,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+require 'date'
 
 class Job < ApplicationRecord
   validates :mover, :move_date, :end_date, :start_time, :end_time, :move_time, presence: true
@@ -40,6 +41,11 @@ class Job < ApplicationRecord
 
   def after_current_time
 
+  end
+
+  def m_date
+    dateHash = Date._strptime(self.move_date.to_s, '%Y-%m-%d')
+    return "#{dateHash[:mon]}/#{dateHash[:mday]}/#{dateHash[:year]}"
   end
 
   def s_time

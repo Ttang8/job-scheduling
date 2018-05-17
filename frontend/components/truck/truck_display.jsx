@@ -31,7 +31,7 @@ class TruckDisplay extends Component {
   renderJobs(truck){
     const jobList = truck.jobs.map((job) => (
       <li key={job.id}>
-        {`${job.mover}, ${job.move_date}, ${job.startTime}, ${job.move_time} hours`}
+        {`${job.mover}, ${job.moveDate}, ${job.startTime}, ${job.move_time} hours`}
       </li>
     ));
 
@@ -64,7 +64,7 @@ const mapStateToProps = ({trucks}) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    requestTrucks: () => dispatch(requestTrucks()),
+    requestTrucks: () => dispatch(requestTrucks())
   };
 };
 

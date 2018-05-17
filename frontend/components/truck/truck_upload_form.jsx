@@ -10,8 +10,7 @@ class TruckUploadForm extends Component {
       end_time: "12:00 AM",
       overnight: false
     };
-    this.date = new Date();
-    this.formatDate = `${this.date.getFullYear()}-${this.date.getMonth()+1 < 10? `0${this.date.getMonth()+1}`: this.date.getMonth()+1}-${this.date.getDate()<10? `0${this.date.getDate()()}`: this.date.getDate()}`;
+
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,7 +48,6 @@ class TruckUploadForm extends Component {
         <h1>Add Truck</h1>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
-          <input type="date" defaultValue={this.formatDate}></input>
           <h2>Name</h2>
           <input placeholder="Name of truck" type="text" autoFocus="autofocus"
             value={this.state.name} onChange={this.update('name')}></input>
